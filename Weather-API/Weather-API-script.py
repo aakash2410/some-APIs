@@ -1,14 +1,19 @@
 import requests 
 import json
 from openpyxl import load_workbook
+import argparse
 
+ap = argparse.ArgumentParser()
+ap.add_argument('-q', '--query', required = True,
+help= "The excel file name to run this script on(please dont forget to add the extension name)")
+args = vars(ap.parse_args())
 
 with open('Weather-key.txt', 'r') as f:
     key = f.read()
 
 while True:
 
-    b = load_workbook(filename='Book 1.xlsx', read_only=False)
+    b = load_workbook(filename=args['query'], read_only=False)
     sheet = b.active
 
     def fetch_temp(city, apikey, unit):
@@ -37,6 +42,6 @@ while True:
             sheet["B"+ str(i+1)] = int(temps[i-1])
         else:
             continue
-    b.save(filename="Book 1.xlsx")
+    b.save(filename=args['query'])
     print("new iter")
         
