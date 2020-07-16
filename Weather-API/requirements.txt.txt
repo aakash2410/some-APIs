@@ -1,0 +1,1 @@
+To run this python script, you require the urllib.requests, json and openpyxl modules. Also a premium API key for the weather API of the site https://www.worldweatheronline.com/ 
