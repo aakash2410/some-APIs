@@ -43,5 +43,5 @@ while True:
         else:
             continue
     b.save(filename=args['query'])
-    print("new iter")
+ 
         
